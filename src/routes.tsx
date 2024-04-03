@@ -1,15 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Dashboard } from "./pages/app/dasboard";
+import { Admin } from "./pages/app/admin";
 import { NotFound } from "./pages/404";
 import { Signup } from "./pages/auth/sing-up";
+import { Livros } from "./pages/app/livros";
 
 export const router = createBrowserRouter([
-    {path: '/', element: <Dashboard/>, errorElement: <NotFound/>},
+    {path: '/', element: <Livros/>, errorElement: <NotFound/>},
     
     {
         path: "/",
         children: [
-            {path: "/sign-up", element: <Signup/>}
+            {path: "/sign-up", element: <Signup/>},
+            {path: '/admin', element: <Admin/>}
         ]
     }
 ])

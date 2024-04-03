@@ -5,11 +5,13 @@ import { toast } from 'sonner'
 import * as z from 'zod'
 import { UserContext } from '../../../context/UsersContext'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ContainerForm, Divisor, Form, DivInput } from './style'
 
 const signUpForm = z.object({
     name: z.string(),
-    email: z.string().email(),
-    password: z.string()
+    serie: z.string(),
+    turno: z.string(),
+    livro: z.string(),
 })
 
 type SignUpForm = z.infer<typeof signUpForm>
@@ -25,19 +27,20 @@ export function Signup() {
     async function handleRegister(data: SignUpForm) {
        try{
             console.log(data)
-            toast.success('Conta criada com sucesso', {
+            toast.success('Pronto agora voce ja pode ir', {
                 action: {
-                    label: 'Entrar',
+                    label: 'Voltar',
                     onClick: () => navigate('/')
                 }
             })
 
-            const {email, name, password} = data
+            const {name, serie, turno, livro} = data
 
             await createUser({
-                email,
                 name,
-                password
+                serie,
+                turno,
+                livro
             })
 
             reset()
@@ -52,12 +55,29 @@ export function Signup() {
 
     return(
         <div>
-            <form action="" onSubmit={handleSubmit(handleRegister)}>
-                <input type="email" required {...register('email')} placeholder='Email...'/>
-                <input type="text" required {...register('name')} placeholder='Usuario...'/>
-                <input type="password" required {...register('password')} placeholder='Senha...'/>
-                <button type="submit">Cadastrar</button>
-            </form>
+            <ContainerForm>
+                <Divisor/>
+                <Form action="" onSubmit={handleSubmit(handleRegister)}>
+                    <h2>Informações Do Aluno:</h2>
+                    <DivInput>
+                        <div>
+                        <label>Turma</label>
+                        <input type="text" required {...register('turno')} placeholder='turno...'/>
+                        <label>Serie</label>
+                        <input type="text" required {...register('serie')} placeholder='serie...'/>
+                        </div>
+                        <div>
+                        <label>Nome</label>
+                        <input type="text" required {...register('name')} placeholder='nome...'/>
+                        <label>Livro</label>
+                        <input type="text" required {...register('livro')} placeholder='livro...'/>
+                        </div>
+                        
+                    </DivInput>
+                    <button type="submit">Cadastrar</button>
+                </Form>
+            </ContainerForm>
+            
         </div>
     )
 }

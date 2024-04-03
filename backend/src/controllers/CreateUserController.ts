@@ -3,14 +3,14 @@ import { CreateUserService } from "../services/CreateUserService";
 
 class CreateUserController{
     async handle(request: FastifyRequest, reply: FastifyReply) {
-        const { name, email, password } = request.body as {name: string, email: string, password: string}
+        const { name, serie, turno, livro } = request.body as {name: string, serie: string, turno: string, livro: string}
         console.log(name)
-        console.log(email)
+        console.log(serie)
 
         const userService= new CreateUserService()
-        const user = await userService.execute({name, email, password})
+        const alunos = await userService.execute({name, serie, turno, livro})
 
-        reply.send(user)
+        reply.send(alunos)
     }
 }
 

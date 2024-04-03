@@ -3,15 +3,18 @@ import { API } from "../lib/axios";
 
 interface User {
     id: number;
-    email: string;
-    password: number;
+    data: string;
     name: string;
+    serie: number;
+    turno: string;
+    livro: string
   }
 
   interface UserInput{
-    email: string;
-    password: string;
     name: string;
+    serie: string;
+    turno: string;
+    livro: string
   }
 
 interface UserContextType{
@@ -42,12 +45,13 @@ export function UsersProvider({children}: UserProviderProps) {
   }
 
   async function createUser(data: UserInput) {
-    const {email, password, name} = data
+    const {name, serie, turno, livro} = data
 
     const response = await API.post('/register', {
-      email,
-      password,
-      name
+      name,
+      serie,
+      turno,
+      livro
   })
 
   setUsers(state => [response.data, ...state])

@@ -10,7 +10,7 @@ export class DeleteUserService{
             throw new Error('Solicictacao invalida')
         }
 
-        const findUsers = await prismaClient.user.findFirst({
+        const findUsers = await prismaClient.alunos.findFirst({
             where:{
                 id: id
             }
@@ -20,7 +20,7 @@ export class DeleteUserService{
             throw new Error('Usuario nao encontrado')
         }
 
-        await prismaClient.user.delete({
+        await prismaClient.alunos.delete({
             where:{
                 id: findUsers.id
             }

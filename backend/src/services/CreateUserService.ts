@@ -2,26 +2,27 @@ import prismaClient from "../prisma";
 
 interface CreateUserProps{
     name: string
-    email: string
-    password: string
+    serie: string
+    turno: string
+    livro: string
 }
 
 class CreateUserService{
-    async execute({name, email, password}: CreateUserProps) {
-        if(!name || !email || !password){
+    async execute({name, serie, turno, livro}: CreateUserProps) {
+        if(!name || !serie || !turno || !livro){
             throw new Error("Preencha todos os campos")
         }
 
-        const user = await prismaClient.user.create({
+        const alunos = await prismaClient.alunos.create({
             data:{
                 name,
-                email,
-                password,
-                status: true
+                serie,
+                turno,
+                livro
             }
         })
 
-        return user
+        return alunos
     }
 }
 

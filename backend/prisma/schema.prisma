@@ -13,14 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Alunos {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  email      String   @unique
-  name       String   @unique
-  password   String?
-  status     Boolean
-  created_at DateTime? @default(now())
-  update_at  DateTime? @default(now())
+  name      String
+  serie       String
+  turno       String
+  livro       String
+  data DateTime? @default(now())
+  ciriado_em  DateTime? @default(now())
 
-  @@map("users")
+  @@map("alunos")
 }

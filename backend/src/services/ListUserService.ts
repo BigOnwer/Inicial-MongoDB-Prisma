@@ -2,8 +2,8 @@ import prismaClient from "../prisma";
 
 export class ListUserService{
     async execute() {
-        const users = await prismaClient.user.findMany()
+        const alunos = await prismaClient.alunos.findMany()
 
-        return users
+        return alunos
     }
 }
