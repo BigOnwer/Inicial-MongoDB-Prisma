@@ -24,3 +24,13 @@ model Alunos {
 
   @@map("alunos")
 }
+
+model Livros {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  syntase       String
+  capa       String
+  ciriado_em  DateTime? @default(now())
+
+  @@map("livros")
+}

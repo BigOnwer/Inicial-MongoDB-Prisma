@@ -21,6 +21,7 @@ interface UserContextType{
     users: User[]
     fetchList: (query?: string) => Promise<void>
     createUser: (data: UserInput) => Promise<void>
+    deleteUser: (id: User) => Promise<void>
 }
 
 interface UserProviderProps{
@@ -57,6 +58,18 @@ export function UsersProvider({children}: UserProviderProps) {
   setUsers(state => [response.data, ...state])
   }
 
+  async function deleteUser(id: User) {
+    try{
+      await API.delete('/delete', {
+        params: {
+          id: id
+        }
+      })
+    }catch(error){
+      console.log(Error)
+    }
+  }
+
   useEffect(() => {
     fetchList()
   }, [])
@@ -67,6 +80,7 @@ export function UsersProvider({children}: UserProviderProps) {
     users,
     fetchList,
     createUser,
+    deleteUser,
   }}
     >
         {children}

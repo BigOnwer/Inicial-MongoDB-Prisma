@@ -1,21 +1,24 @@
 import { useContext} from "react"
 import { UserContext } from "../../../context/UsersContext"
 import { Helmet } from "react-helmet-async"
-import {ConteinerDiv} from './style'
+import {ButtonAddBook, Conatiner, ConteinerDiv} from './style'
 import checkImg from '../../../assets/check.svg'
 import { DateFormartter } from "../../../utils/formatter"
+import * as Dialog from "@radix-ui/react-dialog";
+import { ModalBook } from "../../../components/ModalBook"
 
 export function Admin() {
-    const {users} = useContext(UserContext)
+    const {users, deleteUser} = useContext(UserContext)
+
 
     return(
-        <div>
+        <Conatiner>
             <Helmet title="admin"/>
             {users.map(aluno => {
                 return(
                     <ConteinerDiv key={aluno.id}>
                         <div>
-                            <button><img src={checkImg} alt="" /></button>
+                            <button onClick={() => deleteUser(aluno.id)}><img src={checkImg} alt="" /></button>
                         <h2>Informações do empréstimo</h2>
                         <p>Nome: {aluno.name}</p>
                         <p>Série: {aluno.serie}</p>
@@ -27,6 +30,13 @@ export function Admin() {
                     </ConteinerDiv>
                 )
             })}
-        </div>
+            <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                        <ButtonAddBook>Adicionar Livro</ButtonAddBook>
+                    </Dialog.Trigger>
+
+                    <ModalBook/>
+                </Dialog.Root>
+        </Conatiner>
     )
 }

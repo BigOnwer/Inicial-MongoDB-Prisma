@@ -6,10 +6,9 @@ export const ConteinerDiv = styled.div`
     border-radius: 16px;
     background: #27262B;
     display: flex;
-    flex-direction: column;
     justify-content: start;
     align-items: center;
-    padding-top: 0.5rem;
+    padding: 0.5rem;
     margin: 1rem;
     p{
         margin-top: 0.5rem;
@@ -25,4 +24,27 @@ export const ConteinerDiv = styled.div`
             width: 70%
         }
     }
+`
+
+export const ButtonAddBook = styled.button`
+    background: #00a814;
+    padding: 0.8rem;
+    height: 3rem;
+    width: 10rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    border: 0;
+    position: relative;
+    float: right;
+
+    &:hover{
+        transition: 0.2s background-color;
+        background: #00610b;
+    }
+`
+
+export const Conatiner = styled.div`
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
 `

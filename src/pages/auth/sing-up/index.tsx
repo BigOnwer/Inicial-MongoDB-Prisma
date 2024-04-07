@@ -62,15 +62,15 @@ export function Signup() {
                     <DivInput>
                         <div>
                         <label>Turma</label>
-                        <input type="text" required {...register('turno')} placeholder='turno...'/>
+                        <input type="text" required {...register('turno')} placeholder='turno...' autoComplete="off"/>
                         <label>Serie</label>
-                        <input type="text" required {...register('serie')} placeholder='serie...'/>
+                        <input type="text" required {...register('serie')} placeholder='serie...' autoComplete="off"/>
                         </div>
                         <div>
                         <label>Nome</label>
-                        <input type="text" required {...register('name')} placeholder='nome...'/>
+                        <input type="text" required {...register('name')} placeholder='nome...' autoComplete="off"/>
                         <label>Livro</label>
-                        <input type="text" required {...register('livro')} placeholder='livro...'/>
+                        <input type="text" required {...register('livro')} placeholder='livro...' autoComplete="off"/>
                         </div>
                         
                     </DivInput>
