@@ -2,7 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 import { API } from "../lib/axios";
 
 interface User {
-    id: number;
+    id: string;
     data: string;
     name: string;
     serie: number;
@@ -21,7 +21,7 @@ interface UserContextType{
     users: User[]
     fetchList: (query?: string) => Promise<void>
     createUser: (data: UserInput) => Promise<void>
-    deleteUser: (id: User) => Promise<void>
+    deleteUser: (id: string) => Promise<void>
 }
 
 interface UserProviderProps{
@@ -58,7 +58,7 @@ export function UsersProvider({children}: UserProviderProps) {
   setUsers(state => [response.data, ...state])
   }
 
-  async function deleteUser(id: User) {
+  async function deleteUser(id: string) {
     try{
       await API.delete('/delete', {
         params: {

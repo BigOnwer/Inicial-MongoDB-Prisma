@@ -3,10 +3,6 @@ import { useNavigate, useParams } from "react-router-dom"
 import { UserContext } from "../../../context/BooksContext";
 import { Content, InfosContent } from "./style";
 
-interface BookParams {
-    id: string;
-  }
-
 export function BookDetails() {
   const navigate = useNavigate()
 
@@ -14,7 +10,7 @@ export function BookDetails() {
     navigate('/get-book')
   }
 
-  const { id } = useParams<BookParams>();
+  const { id } = useParams();
 
   const { books } = useContext(UserContext);
 

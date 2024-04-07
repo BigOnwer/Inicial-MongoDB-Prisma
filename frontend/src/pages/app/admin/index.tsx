@@ -10,7 +10,6 @@ import { ModalBook } from "../../../components/ModalBook"
 export function Admin() {
     const {users, deleteUser} = useContext(UserContext)
 
-
     return(
         <Conatiner>
             <Helmet title="admin"/>
